@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+html,
+body {
+  overflow-x: hidden !important;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll animations */
+.scroll-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.scroll-section.animate-fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation delays */
+.scroll-section:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.scroll-section:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.scroll-section:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.scroll-section:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+    --background-secondary: 0 0% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 190 100% 50%;
+    --primary-foreground: 0 0% 6%;
+    --primary-glow: 190 100% 60%;
+
+    --secondary: 210 100% 50%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 190 100% 50%;
+    --accent-foreground: 0 0% 6%;
+    --accent-glow: 190 100% 60%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(190, 100%, 50%),
+      hsl(210, 100%, 50%)
+    );
+    --gradient-glow: radial-gradient(
+      circle,
+      hsl(190, 100%, 50% / 0.15),
+      transparent
+    );
+    --gradient-vibrant: linear-gradient(
+      90deg,
+      hsl(0, 0%, 0%),
+      hsl(240, 33%, 1%),
+      hsl(0, 0%, 0%)
+    );
+
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(190, 100%, 50% / 0.3);
+    --shadow-card: 0 8px 32px hsl(0, 0%, 0% / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  .glass-effect {
+    @apply bg-card/40 backdrop-blur-md border border-border/50;
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .slide-enter {
+    animation: slide-in-right 0.4s ease-out;
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+/* Prevent navbar content overflow on small screens */
+nav,
+.navbar,
+.nav-wrapper {
+  overflow-x: clip !important;
+}
+@layer base {
+  .container {
+    @apply max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto;
+  }
+}
