@@ -127,8 +127,8 @@ const Navbar = () => {
           <motion.div
             className={`w-full max-w-7xl rounded-2xl transition-all duration-500 ${
               isScrolled
-                ? "backdrop-blur-2xl bg-white/20 dark:bg-gray-900/95 shadow-2xl border border-white/30 dark:border-gray-700/50"
-                : "backdrop-blur-xl bg-white/10 dark:bg-gray-900/90 border border-black/20 dark:border-gray-700/30"
+                ? "backdrop-blur-2xl bg-black/20 dark:bg-black/95 shadow-2xl border border-white/30 dark:border-gray-700/50"
+                : "backdrop-blur-xl bg-black/10 dark:bg-black/90 border border-black/20 dark:border-gray-700/30"
             }`}
             style={{
               background: isScrolled

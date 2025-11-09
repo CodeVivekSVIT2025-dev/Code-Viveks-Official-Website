@@ -24,17 +24,11 @@ const navItems = [
   { label: "Contact", path: "/contact", icon: ExternalLink },
 ];
 
-const activitiesItems = [
-  { label: "Hackathons", path: "/activities/hackathons" },
-  { label: "Workshops", path: "/activities/workshops" },
-  { label: "Bootcamps", path: "/activities/bootcamps" },
-  { label: "Guest Talks", path: "/activities/guest-talks" },
-  { label: "Ongoing Projects", path: "/activities/ongoing-projects" },
-  { label: "Completed Projects", path: "/activities/completed-projects" },
-  { label: "Open Source", path: "/activities/open-source" },
-  { label: "Ideas Board", path: "/activities/ideas-board" },
-];
 
+const activitiesItems = [
+  { label: "Events", path: "/events" },
+  { label: "Projects", path: "/projects" },
+];
 const sidebarVariants = {
   closed: { x: "100%" },
   open: { x: 0 }
