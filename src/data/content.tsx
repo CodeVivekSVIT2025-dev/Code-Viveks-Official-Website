@@ -457,7 +457,7 @@ export const clubInfo = {
         ]
       },
       {
-        "role": "Graphic Designer",
+        "role": "Design Head",
         "name": "Tarun",
         "image": "/images/members/tarun.jpg",
         "responsibilities": [
@@ -465,7 +465,18 @@ export const clubInfo = {
           "Ensures consistent branding and aesthetic across all media platforms.",
           "Collaborates with the PR & Photography teams to enhance visual communication."
         ]
+      },
+      {
+        "role": "Operations Head",
+        "name": "Rehan Hussain",
+        "image": "/images/members/rehan.png",
+        "responsibilities": [
+          "Oversees and coordinates the club’s day-to-day operational activities.",
+          "Manages event logistics, scheduling, and resource allocation.",
+          "Ensures smooth execution of club initiatives by collaborating across all departments."
+        ]
       }
+
     ],
     teamLeads:
       "Each team lead supervises their department and ensures growth, coordination, and knowledge transfer across member levels.",
