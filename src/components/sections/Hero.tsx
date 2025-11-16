@@ -15,7 +15,7 @@ const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [activeEvent, setActiveEvent] = useState(0);
   const [activeTab, setActiveTab] = useState('divisions');
-  
+
   const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const whyChooseRef = useRef<HTMLDivElement>(null);
@@ -180,7 +180,7 @@ const Hero = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-between pt-20 px-4 sm:px-6 relative overflow-hidden scroll-section">
+      <section className="min-h-screen flex items-center justify-between mt-5 pt-20 px-4 sm:px-6 relative overflow-hidden scroll-section">
         <div className="mx-auto w-full max-w-6xl grid lg:grid-cols-2 gap-10 lg:gap-20 items-center relative z-10 px-4 sm:px-6 lg:px-8">          {/* Left side - Content */}
           <div className={`space-y-6 lg:space-y-8 transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
             <div className="space-y-4 lg:space-y-6">
@@ -286,6 +286,92 @@ const Hero = () => {
           </div>
         </div>
       </section>
+      {/* Auto-Scrolling Tech Stacks */}
+      <div className="w-full overflow-hidden py-8 mt-10">
+        <div className="flex items-center gap-10 animate-scroll whitespace-nowrap hover:[animation-play-state:paused]">
+
+          {/* Web Development */}
+          {[
+            { icon: "/icons/html.png", name: "HTML" },
+            { icon: "/icons/css.png", name: "CSS" },
+            { icon: "/icons/js.png", name: "JavaScript" },
+            { icon: "/icons/react.png", name: "React" },
+            { icon: "/icons/node.png", name: "Node.js" },
+          ].map((tech, index) => (
+            <div
+              key={"web-" + index}
+              className="flex flex-col items-center text-center min-w-[90px] hover:scale-110 transition-transform"
+            >
+              <img src={tech.icon} className="w-12 h-12 object-contain" alt={tech.name} />
+              <span className="text-sm mt-1 text-muted-foreground">{tech.name}</span>
+            </div>
+          ))}
+
+          {/* AI / ML */}
+          {[
+            { icon: "/icons/python.png", name: "Python" },
+            { icon: "/icons/numpy.png", name: "NumPy" },
+            { icon: "/icons/pandas.png", name: "Pandas" },
+            { icon: "/icons/tensorflow.png", name: "TensorFlow" },
+            { icon: "/icons/jupyter.png", name: "Jupyter" },
+          ].map((tech, index) => (
+            <div
+              key={"aiml-" + index}
+              className="flex flex-col items-center text-center min-w-[90px] hover:scale-110 transition-transform"
+            >
+              <img src={tech.icon} className="w-12 h-12 object-contain" alt={tech.name} />
+              <span className="text-sm mt-1 text-muted-foreground">{tech.name}</span>
+            </div>
+          ))}
+
+          {/* Cybersecurity */}
+          {[
+            { icon: "/icons/kali.png", name: "Kali Linux" },
+            { icon: "/icons/burp.png", name: "Burp Suite" },
+            { icon: "/icons/metasploit.png", name: "Metasploit" },
+          ].map((tech, index) => (
+            <div
+              key={"cyber-" + index}
+              className="flex flex-col items-center text-center min-w-[90px] hover:scale-110 transition-transform"
+            >
+              <img src={tech.icon} className="w-12 h-12 object-contain" alt={tech.name} />
+              <span className="text-sm mt-1 text-muted-foreground">{tech.name}</span>
+            </div>
+          ))}
+
+          {/* Robotics */}
+          {[
+            { icon: "/icons/arduino.png", name: "Arduino" },
+            { icon: "/icons/raspberry.png", name: "Raspberry Pi" },
+            { icon: "/icons/ros.png", name: "ROS" },
+          ].map((tech, index) => (
+            <div
+              key={"robotics-" + index}
+              className="flex flex-col items-center text-center min-w-[90px] hover:scale-110 transition-transform"
+            >
+              <img src={tech.icon} className="w-12 h-12 object-contain" alt={tech.name} />
+              <span className="text-sm mt-1 text-muted-foreground">{tech.name}</span>
+            </div>
+          ))}
+
+          {/* CP */}
+          {[
+            { icon: "/icons/cpp.png", name: "C++" },
+            { icon: "/icons/java.png", name: "Java" },
+            { icon: "/icons/python.png", name: "Python" },
+          ].map((tech, index) => (
+            <div
+              key={"cp-" + index}
+              className="flex flex-col items-center text-center min-w-[90px] hover:scale-110 transition-transform"
+            >
+              <img src={tech.icon} className="w-12 h-12 object-contain" alt={tech.name} />
+              <span className="text-sm mt-1 text-muted-foreground">{tech.name}</span>
+            </div>
+          ))}
+
+        </div>
+      </div>
+
 
       {/* Why Choose Us Section */}
       <section ref={whyChooseRef} className="py-16 lg:py-20 px-4 sm:px-6 relative overflow-hidden scroll-section">
@@ -343,7 +429,7 @@ const Hero = () => {
                 problem-solvers who don't just consume technology, but shape it through hands-on projects and
                 collaborative learning.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <Stat value="150+" label="Active Members" icon={<Users size={20} />} />
                 <Stat value="5" label="Tech Divisions" icon={<Code2 size={20} />} />
@@ -517,7 +603,7 @@ const Hero = () => {
                 Learn More
               </Button>
             </div>
-            
+
             {/* Social Links */}
             <div className="flex justify-center space-x-4 mt-8">
               {[
