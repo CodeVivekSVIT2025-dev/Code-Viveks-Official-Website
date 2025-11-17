@@ -19,7 +19,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
         animate={{ x: `${-100 * direction}%` }}
         exit={{ x: `${-100 * direction}%` }}
         transition={{
-          duration: 0.6, // ⚡ faster
+          duration: 1.0, // ⚡ faster
           ease: [0.83, 0, 0.17, 1],
         }}
       >

@@ -32,7 +32,7 @@ const Navbar = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -96,12 +96,12 @@ const Navbar = () => {
   };
 
   const navVariants = {
-    hidden: { 
+    hidden: {
       y: -100,
       opacity: 0,
       scale: 0.95
     },
-    visible: { 
+    visible: {
       y: 0,
       opacity: 1,
       scale: 1,
@@ -125,29 +125,25 @@ const Navbar = () => {
       >
         <div className="flex justify-center w-full">
           <motion.div
-            className={`w-full max-w-7xl rounded-2xl transition-all duration-500 ${
-              isScrolled
-                ? "backdrop-blur-2xl bg-black/20 dark:bg-black/95 shadow-2xl border border-white/30 dark:border-gray-700/50"
-                : "backdrop-blur-xl bg-black/10 dark:bg-black/90 border border-black/20 dark:border-gray-700/30"
-            }`}
+            className={`w-full max-w-7xl rounded-2xl transition-all duration-500 ${isScrolled
+              ? "backdrop-blur-2xl bg-gray-900/95 shadow-2xl border border-gray-700/50"
+              : "backdrop-blur-xl bg-gray-900/90 border border-gray-700/30"
+              }`}
             style={{
               background: isScrolled
-                ? "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.15) 100%)"
-                : "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%)",
+                ? "linear-gradient(135deg, rgba(30, 30, 40, 0.95) 0%, rgba(15, 15, 25, 0.98) 100%)"
+                : "linear-gradient(135deg, rgba(40, 40, 60, 0.9) 0%, rgba(20, 20, 35, 0.95) 100%)",
               boxShadow: isScrolled
-                ? "0 25px 50px -12px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.2), 0 0 60px rgba(168, 85, 247, 0.15)"
-                : "0 15px 35px -10px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.15), 0 0 40px rgba(168, 85, 247, 0.1)",
+                ? "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(75, 85, 99, 0.3), 0 0 60px rgba(139, 92, 246, 0.2)"
+                : "0 15px 35px -10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(75, 85, 99, 0.2), 0 0 40px rgba(139, 92, 246, 0.15)",
             }}
             whileHover={{
-              boxShadow: isScrolled
-                ? "0 30px 60px -12px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.25), 0 0 80px rgba(168, 85, 247, 0.2)"
-                : "0 20px 45px -10px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.2), 0 0 60px rgba(168, 85, 247, 0.15)",
-              transition: { duration: 0.3 }
+              boxShadow: "0 10px 20px rgba(0,0,0,0.35)"
             }}
           >
             <div className="relative flex items-center justify-between py-3 px-4 sm:px-6 md:px-8">
               {/* Logo */}
-              <motion.div 
+              <motion.div
                 className="flex items-center flex-shrink-0"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400 }}
@@ -172,7 +168,8 @@ const Navbar = () => {
                       key={item.label}
                       onMouseEnter={() => setHoveredItem(item.label)}
                       onMouseLeave={() => setHoveredItem(null)}
-                      className="relative"
+                      className="relative text-white transform-gpu"
+                      style={{ transformStyle: "preserve-3d" }}
                       whileHover={{ y: -1 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
@@ -186,13 +183,16 @@ const Navbar = () => {
                           onClose={() => setActiveDropdown(null)}
                         />
                       ) : (
-                        <NavItem
-                          label={item.label}
-                          path={item.path!}
-                          icon={item.icon}
-                          isActive={isActive}
-                          isHover={isHover}
-                        />
+                        <span className="nav-item-text">
+
+                          <NavItem
+                            label={item.label}
+                            path={item.path!}
+                            icon={item.icon}
+                            isActive={isActive}
+                            isHover={isHover}
+                          />
+                        </span>
                       )}
                     </motion.li>
                   );
@@ -202,7 +202,7 @@ const Navbar = () => {
               {/* Right Controls */}
               <div className="flex items-center justify-end gap-2 sm:gap-3 lg:gap-4">
                 {/* Social Dropdown - Desktop */}
-                <motion.div 
+                <motion.div
                   className="hidden md:block"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400 }}
@@ -216,7 +216,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <motion.button
-                  className="md:hidden relative p-2 rounded-xl border border-white/30 dark:border-gray-400/30 bg-white/5 dark:bg-gray-800/70 hover:bg-white/10 dark:hover:bg-gray-700/70 transition-all duration-300 group"
+                  className="md:hidden relative p-2 rounded-xl border border-gray-600 bg-gray-800/80 hover:bg-gray-700/80 transition-all duration-300 group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsOpen(!isOpen)}
@@ -232,7 +232,7 @@ const Navbar = () => {
                           exit={{ rotate: 90, opacity: 0 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <X className="w-5 h-5 text-white dark:text-gray-200 group-hover:text-purple-300 dark:group-hover:text-purple-400 transition-colors" />
+                          <X className="w-5 h-5 text-gray-200 group-hover:text-purple-400 transition-colors" />
                         </motion.div>
                       ) : (
                         <motion.div
@@ -242,15 +242,15 @@ const Navbar = () => {
                           exit={{ rotate: -90, opacity: 0 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <Menu className="w-5 h-5 text-white dark:text-gray-200 group-hover:text-purple-300 dark:group-hover:text-purple-400 transition-colors" />
+                          <Menu className="w-5 h-5 text-gray-200 group-hover:text-purple-400 transition-colors" />
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
-                  
+
                   {/* Animated background effect */}
                   <motion.div
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 dark:from-purple-400/30 dark:to-pink-400/30 opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-600/30 to-blue-600/30 opacity-0 group-hover:opacity-100"
                     initial={false}
                     animate={{ opacity: isOpen ? 1 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -277,7 +277,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeAll}
-            className="fixed inset-0 bg-black/50 dark:bg-black/80 backdrop-blur-sm z-40 md:hidden"
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 md:hidden"
           />
         )}
       </AnimatePresence>
